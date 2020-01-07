@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
+import ThemeContext from "./ThemeContext";
 
 const App = () => {
+  const theme = useState("peru");
   return (
-    <div>
+    <ThemeContext.Provider value={theme}>
       <header>
         <Link to="/">Adopt me!</Link>
       </header>
@@ -14,7 +16,7 @@ const App = () => {
         <SearchParams path="/" />
         <Details path="/details/:id" />
       </Router>
-    </div>
+    </ThemeContext.Provider>
   );
 };
 
